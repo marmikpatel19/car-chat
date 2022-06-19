@@ -1,9 +1,10 @@
 const express = require("express");
+const PostsController = require("./posts.controller");
 const router = express.Router();
 
 // GET request
 router.get("/", (req, res) => {
-  res.status(200).send("Hello, World!");
+  PostsController.apiGetPosts(req, res);
 });
 
 module.exports = router;

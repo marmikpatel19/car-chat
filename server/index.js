@@ -1,5 +1,23 @@
+const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv");
+
+let db;
+
+// Load in environment variables
+dotenv.config();
+
+async function connectDB() {
+  const client = new MongoClient(process.env.DB_URI);
+  await client.connect();
+  db = client.db();
+}
+
+module.exports = connectDB;
+
+{
+  /*const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const PostsDAO = require("./dao/postsDAO");
 
 // Load in environment variables
 dotenv.config();
@@ -17,6 +35,8 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+*/
+}
 
 {
   /*const app = require("./server.js");
