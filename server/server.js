@@ -30,12 +30,12 @@ async function connectDB() {
 connectDB();
 
 /* Routes */
+app.use("/api/posts/admin", admin);
+
 app.use("/api/posts", async (req, res) => {
   const allPosts = await db.collection("posts").find().toArray();
   res.render("home", { allPosts });
 });
-
-app.use("/api/posts/admin", admin);
 
 app.use("*", main);
 
