@@ -3,6 +3,9 @@ const { MongoClient } = require("mongodb");
 const port = process.env.PORT || 8000;
 const dotenv = require("dotenv");
 
+// Route Imports
+const admin = require("./routes/adminRouter");
+
 // App Init
 const app = express();
 
@@ -24,6 +27,10 @@ async function connectDB() {
 }
 
 connectDB();
+
+/* Routes */
+
+app.use("/api/posts/admin", admin);
 
 // Port
 app.listen(port, () => {
