@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 
 // Route Imports
 const admin = require("./routes/adminRouter");
+const main = require("./routes/mainRouter");
 
 // App Init
 const app = express();
@@ -29,8 +30,14 @@ async function connectDB() {
 connectDB();
 
 /* Routes */
+app.use("/api/posts", async (req, res) => {
+  const allPosts = await db.collection("posts").find().toArray();
+  res.render("home", { allPosts });
+});
 
 app.use("/api/posts/admin", admin);
+
+app.use("*", main);
 
 // Port
 app.listen(port, () => {
