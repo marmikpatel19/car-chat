@@ -1,20 +1,26 @@
 const express = require("express");
-const cors = require("cors");
-const connectDB = require("./index");
+const { MongoClient } = require("mongodb");
 const port = process.env.PORT || 8000;
+const dotenv = require("dotenv");
+
+// App Init
+const app = express();
+
+// URI Configuration
+dotenv.config();
+
+/* DB Connection */
+let db;
+
+async function connectDB() {
+  const client = new MongoClient(process.env.DB_URI);
+  await client.connect();
+  db = client.db();
+}
 
 connectDB();
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-// Routes
-app.use("/api/posts", require("./api/posts.route.js"));
-app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
-
-// Set port
+// Port
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
