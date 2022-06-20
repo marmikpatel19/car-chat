@@ -6,6 +6,11 @@ const dotenv = require("dotenv");
 // App Init
 const app = express();
 
+// Ejs
+app.set("view engine", "ejs");
+app.set("views", "./views");
+app.use(express.static("public"));
+
 // URI Configuration
 dotenv.config();
 
