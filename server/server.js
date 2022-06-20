@@ -10,10 +10,10 @@ const main = require("./routes/mainRouter");
 // App Init
 const app = express();
 
-// Ejs
+// Views
 app.set("view engine", "ejs");
-app.set("views", "./views");
-app.use(express.static("public"));
+app.set("views", "../client/src/views");
+app.use(express.static("../client/public"));
 
 // URI Configuration
 dotenv.config();
