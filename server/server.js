@@ -32,6 +32,11 @@ connectDB();
 /* Routes */
 app.use("/api/posts/admin", admin);
 
+app.use("/api/posts/posts", async (req, res) => {
+  const allPosts = await db.collection("posts").find().toArray();
+  res.json(allPosts);
+});
+
 app.use("/api/posts", async (req, res) => {
   const allPosts = await db.collection("posts").find().toArray();
   res.render("home", { allPosts });
