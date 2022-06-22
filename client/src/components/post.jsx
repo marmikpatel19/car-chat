@@ -10,6 +10,41 @@ function Post(props) {
   return (
     <div className="card">
       <div className="card-body">
+        {!isEditing && (
+          <>
+            <h4>{props.title}</h4>
+            <p className="text-muted small">{props.topic}</p>
+            <p className="text-muted small">{props.description}</p>
+            {!props.readOnly && (
+              <>
+                <button
+                  onClick={() => {
+                    setIsEditing(true);
+                    setDraftTitle(props.title);
+                    setDraftTopic(props.topic);
+                    setDraftDescription(props.description);
+                  }}
+                  className="btn btn-sm btn-primary"
+                >
+                  Edit
+                </button>{" "}
+                <button
+                  onClick={async () => {
+                    const test = Axios.delete(`/post/${props.id}`);
+                    props.setPosts((prev) => {
+                      return prev.filter((post) => {
+                        return post.post_id !== props.id;
+                      });
+                    });
+                  }}
+                  className="btn btn-sm btn-outline-danger"
+                >
+                  Delete
+                </button>
+              </>
+            )}
+          </>
+        )}
         {isEditing && (
           <form onSubmit={submitHandler}>
             <div className="mb-1">
