@@ -7,6 +7,15 @@ import "./styling/app.css";
 function App() {
   const [posts, setPosts] = useState([]);
 
+  // Providing an empty array ensures that this request only runs once
+  useEffect(() => {
+    async function getData() {
+      const response = await Axios.get("http://localhost:8000/api/posts/posts");
+      setPosts(response.data);
+    }
+    getData();
+  }, []);
+
   return (
     <div className="container">
       <p>
