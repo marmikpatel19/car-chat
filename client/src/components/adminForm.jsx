@@ -6,6 +6,21 @@ function AdminForm(props) {
   const [topic, setTopic] = useState("");
   const [description, setDescription] = useState("");
 
+  async function submitHandler(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("title", title);
+    data.append("topic", topic);
+    data.append("description", description);
+    setTitle("");
+    setTopic("");
+    setDescription("");
+    const newPost = await Axios.post("/api/create-post", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    props.setPosts((prev) => prev.concat([newPost.data]));
+  }
+
   return (
     <form
       className="p-3 bg-success bg-opacity-25 mb-5"
