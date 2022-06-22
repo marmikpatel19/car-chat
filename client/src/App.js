@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Post from "./components/post";
+import Axios from "axios";
+import AdminForm from "./components/adminForm";
+import "./styling/app.css";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <p>
+        <a href="/api/posts">&laquo; Back to public homepage</a>
+      </p>
+      <AdminForm setPosts={setPosts} />
+      <div className="post-grid">
+        {posts.map(function (post) {
+          return (
+            <Post
+              key={post.post_id}
+              title={post.title}
+              topic={post.topic}
+              description={post.description}
+              date={post.date}
+              setPosts={setPosts}
+              id={post.post_id}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
