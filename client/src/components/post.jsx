@@ -7,6 +7,43 @@ function Post(props) {
   const [draftTopic, setDraftTopic] = useState("");
   const [draftDescription, setDraftDescription] = useState("");
 
+  async function submitHandler(e) {
+    e.preventDefault();
+    setIsEditing(false);
+    props.setPosts((prev) =>
+      prev.map(function (post) {
+        if (post.post_id === props.id) {
+          return {
+            ...post,
+            title: draftTitle,
+            topic: draftTopic,
+            description: draftDescription,
+          };
+        }
+        return post;
+      })
+    );
+    const data = new FormData();
+
+    data.append("post_id", props.id);
+    data.append("title", draftTitle);
+    data.append("topic", draftTopic);
+    data.append("description", draftDescription);
+    const newPost = await Axios.post("/update-post", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    if (newPost.data) {
+      props.setPosts((prev) => {
+        return prev.map(function (post) {
+          if (post.post_id === props.id) {
+            return { ...post };
+          }
+          return post;
+        });
+      });
+    }
+  }
+
   return (
     <div className="card">
       <div className="card-body">
