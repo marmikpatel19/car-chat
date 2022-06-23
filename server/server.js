@@ -30,6 +30,10 @@ async function connectDB() {
 
 connectDB();
 
+// Accessing JSON POST data
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 /* Middleware */
 var allowCrossDomain = function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -51,6 +55,15 @@ app.use("/api/posts/posts", async (req, res) => {
 app.use("/api/posts", async (req, res) => {
   const allPosts = await db.collection("posts").find().toArray();
   res.render("home", { allPosts });
+});
+
+app.post("/api/create-post", dataCleanse, async (req, res) => {
+  console.log(req.body);
+  const info = await db.collection("posts").insertOne(req.cleanData);
+  const newPost = await db
+    .collection("posts")
+    .findOne({ _id: new ObjectId(info.insertedId) });
+  res.send(newPost);
 });
 
 app.use("*", main);
