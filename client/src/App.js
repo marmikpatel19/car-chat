@@ -32,7 +32,7 @@ function App() {
               description={post.description}
               date={post.date}
               setPosts={setPosts}
-              id={post.post_id}
+              id={post._id}
             />
           );
         })}

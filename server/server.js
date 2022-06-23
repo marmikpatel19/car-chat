@@ -52,18 +52,24 @@ app.use("/api/posts/posts", async (req, res) => {
   res.json(allPosts);
 });
 
-app.use("/api/posts", async (req, res) => {
-  const allPosts = await db.collection("posts").find().toArray();
-  res.render("home", { allPosts });
+app.delete("/api/posts/:id", async (req, res) => {
+  console.log("deleted");
+  if (typeof req.params.id != "string") req.params.id = "";
+  db.collection("posts").deleteOne({ _id: new ObjectId(req.params.id) });
+  res.send("good job");
 });
 
 app.post("/api/posts/create-post", dataCleanse, async (req, res) => {
-  console.log(req.body);
   const info = await db.collection("posts").insertOne(req.cleanData);
   const newPost = await db
     .collection("posts")
     .findOne({ _id: new ObjectId(info.insertedId) });
   res.send(newPost);
+});
+
+app.use("/api/posts", async (req, res) => {
+  const allPosts = await db.collection("posts").find().toArray();
+  res.render("home", { allPosts });
 });
 
 app.use("*", main);

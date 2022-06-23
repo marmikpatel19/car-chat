@@ -67,10 +67,12 @@ function Post(props) {
                 </button>{" "}
                 <button
                   onClick={async () => {
-                    const test = Axios.delete(`/api/posts/${props.id}`);
+                    const test = Axios.delete(
+                      `http://localhost:8000/api/posts/${props.id}`
+                    );
                     props.setPosts((prev) => {
                       return prev.filter((post) => {
-                        return post.post_id !== props.id;
+                        return post._id !== props.id;
                       });
                     });
                   }}
