@@ -12,6 +12,15 @@ function AdminForm(props) {
       title,
       topic,
       description,
+    }).then((response) => {
+      props.setPosts([
+        ...props.posts,
+        {
+          title,
+          topic,
+          description,
+        },
+      ]);
     });
   };
 

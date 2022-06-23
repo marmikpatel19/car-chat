@@ -21,7 +21,7 @@ function App() {
       <p>
         <a href="/api/posts">&laquo; Back to public homepage</a>
       </p>
-      <AdminForm setPosts={setPosts} />
+      <AdminForm setPosts={setPosts} posts={posts} />
       <div className="post-grid">
         {posts.map(function (post) {
           return (
