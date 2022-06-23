@@ -8,7 +8,7 @@ function AdminForm(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:8000/api/create-post", {
+    Axios.post("http://localhost:8000/api/posts/create-post", {
       title,
       topic,
       description,

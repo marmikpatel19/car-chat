@@ -57,7 +57,7 @@ app.use("/api/posts", async (req, res) => {
   res.render("home", { allPosts });
 });
 
-app.post("/api/create-post", dataCleanse, async (req, res) => {
+app.post("/api/posts/create-post", dataCleanse, async (req, res) => {
   console.log(req.body);
   const info = await db.collection("posts").insertOne(req.cleanData);
   const newPost = await db

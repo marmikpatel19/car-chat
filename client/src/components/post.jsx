@@ -67,7 +67,7 @@ function Post(props) {
                 </button>{" "}
                 <button
                   onClick={async () => {
-                    const test = Axios.delete(`/post/${props.id}`);
+                    const test = Axios.delete(`/api/posts/${props.id}`);
                     props.setPosts((prev) => {
                       return prev.filter((post) => {
                         return post.post_id !== props.id;
