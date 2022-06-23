@@ -1,7 +1,8 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const port = process.env.PORT || 8000;
 const dotenv = require("dotenv");
+const sanitizeHTML = require("sanitize-html");
 
 // Route Imports
 const admin = require("./routes/adminRouter");
@@ -53,6 +54,32 @@ app.use("/api/posts", async (req, res) => {
 });
 
 app.use("*", main);
+
+// Middleware for user data cleansing and sanitization
+function dataCleanse(req, res, next) {
+  if (typeof req.body.title != "string") req.body.title = "";
+  if (typeof req.body.topic != "string") req.body.topic = "";
+  if (typeof req.body.description != "string") req.body.description = "";
+  if (typeof req.body._id != "string") req.body.id = "";
+
+  // Sanitize values
+  req.cleanData = {
+    title: sanitizeHTML(req.body.title.trim(), {
+      allowedTags: [],
+      allowedAttributed: {},
+    }),
+    topic: sanitizeHTML(req.body.topic.trim(), {
+      allowedTags: [],
+      allowedAttributed: {},
+    }),
+    description: sanitizeHTML(req.body.description.trim(), {
+      allowedTags: [],
+      allowedAttributed: {},
+    }),
+  };
+
+  next();
+}
 
 // Port
 app.listen(port, () => {
