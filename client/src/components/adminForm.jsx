@@ -6,20 +6,23 @@ function AdminForm(props) {
   const [topic, setTopic] = useState("");
   const [description, setDescription] = useState("");
 
-  async function submitHandler(e) {
+  const submitHandler = (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("title", title);
-    data.append("topic", topic);
-    data.append("description", description);
-    setTitle("");
-    setTopic("");
-    setDescription("");
-    const newPost = await Axios.post("/api/create-post", data, {
-      headers: { "Content-Type": "multipart/form-data" },
+    Axios.post("http://localhost:8000/api/posts/create-post", {
+      title,
+      topic,
+      description,
+    }).then((response) => {
+      props.setPosts([
+        ...props.posts,
+        {
+          title,
+          topic,
+          description,
+        },
+      ]);
     });
-    props.setPosts((prev) => prev.concat([newPost.data]));
-  }
+  };
 
   return (
     <form
