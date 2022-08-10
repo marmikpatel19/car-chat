@@ -1,5 +1,5 @@
 const express = require("express");
-const { MongoClient, ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
 const port = process.env.PORT || 8000;
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -11,16 +11,8 @@ dotenv.config();
 // App Init
 const app = express();
 
-/* DB Connection */
-let db;
-
-async function connectDB() {
-  const client = new MongoClient(process.env.DB_URI);
-  await client.connect();
-  db = client.db();
-}
-
-connectDB();
+// DB Connection
+mongoose.connect(process.env.DB_URI);
 
 /* Middleware */
 app.use(express.json());
