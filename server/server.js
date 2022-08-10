@@ -2,16 +2,14 @@ const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 const port = process.env.PORT || 8000;
 const dotenv = require("dotenv");
-
-// Route Imports
-const admin = require("./routes/adminRouter");
-const main = require("./routes/mainRouter");
-
-// App Init
-const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // URI Configuration
 dotenv.config();
+
+// App Init
+const app = express();
 
 /* DB Connection */
 let db;
@@ -24,19 +22,17 @@ async function connectDB() {
 
 connectDB();
 
-// Accessing JSON POST data
+/* Middleware */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-/* Middleware */
-var allowCrossDomain = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-};
-
-app.use(allowCrossDomain);
+app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 
 /* Routes */
 app.use("/api/posts/admin", admin);
