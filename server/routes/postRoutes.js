@@ -11,4 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+// GET request to obtain all posts from Reddit API
+router.get("/posts", getPosts);
+
 module.exports = router;
