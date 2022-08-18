@@ -4,6 +4,7 @@ const port = process.env.PORT || 8000;
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const postRoutes = require("./routes/postRoutes");
 
 // URI Configuration
 dotenv.config();
@@ -27,6 +28,7 @@ app.use(
 );
 
 /* Routes */
+app.use("/api", postRoutes);
 
 // Port
 app.listen(port, () => {
