@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { getPosts } = require("../controllers/postController");
 
 // Router
 const router = express.Router();
