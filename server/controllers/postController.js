@@ -1,8 +1,13 @@
 const axios = require("axios").default;
 const { categorizeData } = require("../helpers/categorizationAlgorithm");
+const { createPosts } = require("../helpers/postManagement");
+const Post = require("../classes/Post");
 
 // Posts from Reddit API
 var posts;
+
+// Cleaned posts (array of Post objects)
+var cleanedPosts;
 
 // Sorting categories
 var ex1;
@@ -13,6 +18,17 @@ var ex4;
 // GET all posts from Reddit API
 const getPosts = async (req, res) => {
   const response = await axios
+    .get("https://www.reddit.com/r/cars/hot.json?limit=25")
+    .catch((err) => {
+      console.log("Error obtaining posts from Reddit API: " + err);
+      return;
+    });
+
+  posts = response.data;
+
+  cleanedPosts = createPosts(posts);
+
+  /*const response = await axios
     .get("https://www.reddit.com/r/cars.json")
     .catch((err) => {
       console.log("Error obtaining posts from Reddit API: " + err);
@@ -31,7 +47,7 @@ const getPosts = async (req, res) => {
   } catch (err) {
     console.log("Error categorizing posts: " + err);
     return;
-  }
+  }*/
 };
 
 module.exports = {
