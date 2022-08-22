@@ -1,4 +1,4 @@
-const { Post } = require("../classes/Post");
+const { Post } = require("../classes/post");
 
 // Creates an array of Post objects from raw JSON data of posts from Reddit API
 const createPosts = (posts) => {

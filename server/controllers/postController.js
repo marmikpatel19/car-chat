@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 const { categorizeData } = require("../helpers/categorizationAlgorithm");
 const { createPosts } = require("../helpers/postManagement");
-const Post = require("../classes/Post");
+const Post = require("../classes/post");
 
 // Posts from Reddit API
 var posts;
