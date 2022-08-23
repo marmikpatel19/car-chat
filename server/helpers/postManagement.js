@@ -32,7 +32,7 @@ const createPosts = (posts) => {
     try {
       externalLink = post.url_overridden_by_dest;
 
-      if (externalLink == "") {
+      if (externalLink == "" || externalLink == null) {
         externalLink = null;
       }
     } catch (error) {
