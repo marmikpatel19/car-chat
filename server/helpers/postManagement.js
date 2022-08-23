@@ -39,8 +39,23 @@ const createPosts = (posts) => {
       externalLink = null;
     }
 
+    // Post url. Null indicates no external link
+    var url;
+
+    try {
+      url = post.permalink;
+
+      if (url == "" || url == null) {
+        url = null;
+      } else {
+        url = "https://www.reddit.com" + url;
+      }
+    } catch (error) {
+      url = null;
+    }
+
     // new Post object
-    const cleanedPost = new Post(title, description, externalLink);
+    const cleanedPost = new Post(title, description, externalLink, url);
 
     cleanedPosts.push(cleanedPost);
   }
