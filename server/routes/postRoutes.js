@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { getPosts } = require("../controllers/postController");
+const { getPosts, getCategories } = require("../controllers/postController");
 
 // Router
 const router = express.Router();
@@ -14,5 +14,8 @@ app.use(cors());
 
 // GET request to obtain all posts from Reddit API
 router.get("/posts", getPosts);
+
+// GET categories from server
+router.get("/categories", getCategories);
 
 module.exports = router;
