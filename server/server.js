@@ -5,9 +5,10 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const postRoutes = require("./routes/postRoutes");
+const path = require("path");
 
 // URI Configuration
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "./.env") });
 
 // App Init
 const app = express();
