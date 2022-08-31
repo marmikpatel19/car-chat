@@ -4,9 +4,11 @@ const port = process.env.PORT || 8000;
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const postRoutes = require("./routes/postRoutes");
+const path = require("path");
 
 // URI Configuration
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "./.env") });
 
 // App Init
 const app = express();
@@ -27,6 +29,7 @@ app.use(
 );
 
 /* Routes */
+app.use("/api", postRoutes);
 
 // Port
 app.listen(port, () => {
