@@ -1,0 +1,19 @@
+#home-title {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-reg);
+  text-align: center;
+  margin: auto;
+  margin-top: 30%;
+  padding-left: 8px;
+  padding-right: 8px;
+  max-width: 750px;
+}
+
+@media screen and (min-width: 550px) {
+  #home-title {
+    font-size: var(--fs-1);
+    text-align: center;
+    margin-top: 100px;
+    text-decoration: underline;
+  }
+}
