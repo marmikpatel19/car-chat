@@ -9,6 +9,12 @@
   max-width: 750px;
 }
 
+#home-button {
+  justify-content: center;
+  text-transform: none;
+  margin-top: 35px;
+}
+
 @media screen and (min-width: 550px) {
   #home-title {
     font-size: var(--fs-1);
