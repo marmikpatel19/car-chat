@@ -21,6 +21,20 @@
   margin-top: 35px;
 }
 
+#home-footer {
+  background-color: grey;
+  padding: 10px;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.home-footer-text {
+  font-size: var(--fs-4);
+  text-align: center;
+  margin-top: 13px;
+}
+
 @media screen and (min-width: 550px) {
   #home-title {
     font-size: var(--fs-1);
