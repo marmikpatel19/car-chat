@@ -1,9 +1,15 @@
+#home-logo {
+  max-width: 200px;
+  margin-left: 30px;
+  margin-top: -40px;
+}
+
 #home-title {
   font-size: var(--fs-2);
   font-weight: var(--fw-reg);
   text-align: center;
   margin: auto;
-  margin-top: 30%;
+  margin-top: 0%;
   padding-left: 8px;
   padding-right: 8px;
   max-width: 750px;
@@ -19,7 +25,7 @@
   #home-title {
     font-size: var(--fs-1);
     text-align: center;
-    margin-top: 100px;
+    margin-top: 0px;
     text-decoration: underline;
   }
 }

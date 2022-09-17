@@ -2,6 +2,7 @@ import "../../styling/home.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
+import logo from "../../images/CarChat Logo.png";
 
 function Home() {
   // Button click to fetch data
@@ -18,6 +19,7 @@ function Home() {
 
   return (
     <div id="home">
+      <img id="home-logo" src={logo} alt="CarChar Logo" />
       <h1 id="home-title">Explore what’s trending in the automobile world!</h1>
       <Typography component="div" align="center">
         <Button
