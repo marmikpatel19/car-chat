@@ -14,20 +14,7 @@ function Categories() {
             fontSize: "1.3rem",
             ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
           }}
-          id="categories-discussions-button"
-          /*onClick={() => setIsClicked(true)}*/
-        >
-          Discussions
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            fontWeight: "900",
-            fontSize: "1.3rem",
-            ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
-          }}
-          id="categories-news-button"
+          id="categories-buttons"
           /*onClick={() => setIsClicked(true)}*/
         >
           News
@@ -40,7 +27,20 @@ function Categories() {
             fontSize: "1.3rem",
             ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
           }}
-          id="categories-general-button"
+          id="categories-buttons"
+          /*onClick={() => setIsClicked(true)}*/
+        >
+          Discussions
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{
+            fontWeight: "900",
+            fontSize: "1.3rem",
+            ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
+          }}
+          id="categories-buttons"
           /* onClick={() => setIsClicked(true)}*/
         >
           general
