@@ -20,7 +20,9 @@ function Home() {
 
   return (
     <div id="home">
-      <img id="home-logo" src={logo} alt="CarChar Logo" />
+      <Link href="/">
+        <img id="home-logo" src={logo} alt="CarChar Logo" />
+      </Link>
       <h1 id="home-title">Explore what’s trending in the automobile world!</h1>
       <Typography component="div" align="center">
         <Button
