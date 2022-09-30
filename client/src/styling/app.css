@@ -3,16 +3,13 @@
   box-sizing: border-box;
 
   /*Font Sizes*/
-  --fs-1: 3rem;
+  --fs-1: 2.5rem;
   --fs-2: 2rem;
   --fs-3: 1.5rem;
+  --fs-4: 1.3rem;
 
   /*Colors*/
-  --clr-primary: #0393d2;
-  --clr-secondary: #ff6400;
-  --clr-primary-light: #66d0ff;
-  --clr-secondary-light: #ff9856;
-  --clr-primary-light-background: #ddfdff;
+  --clr-primary: #48a4c8;
   --clr-black: rgb(45, 45, 45);
   --clr-white: #fff;
 

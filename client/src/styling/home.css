@@ -1,0 +1,49 @@
+#home-logo {
+  max-width: 200px;
+  margin-left: 30px;
+  margin-top: -40px;
+}
+
+#home-title {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-reg);
+  text-align: center;
+  margin: auto;
+  margin-top: 0%;
+  padding-left: 8px;
+  padding-right: 8px;
+  max-width: 750px;
+  padding: 5px;
+  border-width: 4px;
+  border-radius: 7px;
+  border-color: var(--clr-primary);
+  border-style: solid;
+}
+
+#home-button {
+  justify-content: center;
+  text-transform: none;
+  margin-top: 35px;
+}
+
+#home-footer {
+  background-color: grey;
+  padding: 10px;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.home-footer-text {
+  font-size: var(--fs-4);
+  text-align: center;
+  margin-top: 13px;
+}
+
+@media screen and (min-width: 550px) {
+  #home-title {
+    font-size: var(--fs-1);
+    text-align: center;
+    margin-top: 0px;
+  }
+}
