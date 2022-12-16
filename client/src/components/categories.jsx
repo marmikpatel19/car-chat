@@ -1,13 +1,36 @@
 import "../styling/categories.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
 function Categories() {
   // Hooks for buttons
   const [isNewsClicked, setIsNewsClicked] = useState(true);
   const [isDiscussionsClicked, setIsDiscussionsClicked] = useState(false);
   const [isGeneralClicked, setIsGeneralClicked] = useState(false);
+
+  // Array of Post objects
+  const [newsPosts, setNewsPosts] = useState(null);
+  const [discussionPosts, setDiscussionPosts] = useState(null);
+  const [generalPosts, setGeneralPosts] = useState(null);
+
+  useEffect(() => {
+    // response.data is an array consisting of Category objects
+    // within each Category object, .posts gets the array of Post objects, which can be indexed
+    // each array of Post objects has fields title, discription, externalLink, and url
+    const getPosts = async () => {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_ENDPOINT}/api/categories`
+      );
+
+      setDiscussionPosts(response.data[0].posts);
+      setNewsPosts(response.data[1].posts);
+      setGeneralPosts(response.data[2].posts);
+    };
+
+    getPosts();
+  }, []);
 
   return (
     <div id="categories">
