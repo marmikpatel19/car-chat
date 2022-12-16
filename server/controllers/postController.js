@@ -44,7 +44,7 @@ const getPosts = async (req, res) => {
 
 // GET all posts from Reddit API
 const getCategories = async (req, res) => {
-  getPosts();
+  await getPosts();
 
   res.send([discussions, news, general]);
 };
