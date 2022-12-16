@@ -14,7 +14,7 @@ dotenv.config({ path: path.resolve(__dirname, "./.env") });
 const app = express();
 
 // DB Connection
-mongoose.connect(process.env.DB_URI);
+//mongoose.connect(process.env.DB_URI);
 
 /* Middleware */
 app.use(express.json());
