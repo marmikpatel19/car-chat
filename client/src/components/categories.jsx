@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import Post from "./post";
 
 function Categories() {
   // Hooks for buttons
@@ -11,14 +12,14 @@ function Categories() {
   const [isGeneralClicked, setIsGeneralClicked] = useState(false);
 
   // Array of Post objects
-  const [newsPosts, setNewsPosts] = useState(null);
-  const [discussionPosts, setDiscussionPosts] = useState(null);
-  const [generalPosts, setGeneralPosts] = useState(null);
+  const [newsPosts, setNewsPosts] = useState([]);
+  const [discussionPosts, setDiscussionPosts] = useState([]);
+  const [generalPosts, setGeneralPosts] = useState([]);
 
   useEffect(() => {
-    // response.data is an array consisting of Category objects
-    // within each Category object, .posts gets the array of Post objects, which can be indexed
-    // each array of Post objects has fields title, discription, externalLink, and url
+    // Response.data is an array consisting of Category objects.
+    // Within each Category object, .posts gets the array of Post objects, which can be indexed.
+    // Each array of Post objects has fields title, discription, externalLink, and url.
     const getPosts = async () => {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_ENDPOINT}/api/categories`
@@ -91,6 +92,25 @@ function Categories() {
           general
         </Button>
       </Typography>
+      {console.log(newsPosts)}
+      {isNewsClicked && (
+        newsPosts.map(post => {
+            return <Post title={post.title} discription={post.discription} externalLink={post.externalLink}
+            url={post.url}></Post>
+        })
+      )}
+      {isDiscussionsClicked && (
+        discussionPosts.map(post => {
+            return <Post title={post.title} discription={post.discription} externalLink={post.externalLink}
+            url={post.url}></Post>
+        })
+      )}
+      {isGeneralClicked && (
+        generalPosts.map(post => {
+            return <Post title={post.title} discription={post.discription} externalLink={post.externalLink}
+            url={post.url}></Post>
+        })
+      )}
     </div>
   );
 }
