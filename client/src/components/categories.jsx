@@ -19,7 +19,7 @@ function Categories() {
   useEffect(() => {
     // Response.data is an array consisting of Category objects.
     // Within each Category object, .posts gets the array of Post objects, which can be indexed.
-    // Each array of Post objects has fields title, discription, externalLink, and url.
+    // Each array of Post objects has fields title, description, externalLink, and url.
     const getPosts = async () => {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_ENDPOINT}/api/categories`
@@ -92,23 +92,23 @@ function Categories() {
           general
         </Button>
       </Typography>
-      {console.log(newsPosts)}
       {isNewsClicked && (
         newsPosts.map(post => {
-            return <Post title={post.title} discription={post.discription} externalLink={post.externalLink}
-            url={post.url}></Post>
+            {console.log(post.description)}
+            return <Post title={post.title} description={post.description} externalLink={post.externalLink}
+            postType="news"></Post>
         })
       )}
       {isDiscussionsClicked && (
         discussionPosts.map(post => {
-            return <Post title={post.title} discription={post.discription} externalLink={post.externalLink}
-            url={post.url}></Post>
+            return <Post title={post.title} description={post.description} externalLink={post.externalLink}
+            url={post.url} postType="discussion"></Post>
         })
       )}
       {isGeneralClicked && (
         generalPosts.map(post => {
-            return <Post title={post.title} discription={post.discription} externalLink={post.externalLink}
-            url={post.url}></Post>
+            return <Post title={post.title} description={post.description} externalLink={post.externalLink}
+            url={post.url} postType="general"></Post>
         })
       )}
     </div>

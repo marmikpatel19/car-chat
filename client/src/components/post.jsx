@@ -12,23 +12,24 @@ function Post(props) {
           <Typography gutterBottom variant="h5" component="div" align="center">
             {props.title}
           </Typography>
-          <Typography variant="body2" >
-            {props.discription}
+          <Typography variant="body2" align="center">
+            {props.description}
           </Typography>
           <Link
             component="button"
             variant="body2"
             href={props.externalLink}
           >
-            See Video
+            {props.postType == "general" && "See Video"}
+            {props.postType == "news" && "See News Article"}
           </Link>
-          <Link
+          {props.postType === "discussion" && <Link
             component="button"
             variant="body2"
             href={props.url}
           >
-            See Discussion
-          </Link>
+            See Online Discussion
+          </Link>}
         </CardContent>
       </CardActionArea>
   </Card>
