@@ -16,7 +16,7 @@ const categorizeData = (posts) => {
     // A post fits into the News category if it lacks a description but includes a non-YouTube link
     else if (
       posts[i].externalLink != null &&
-      !posts[i].externalLink.includes("https://www.youtube.com")
+      !posts[i].externalLink.includes("youtu")
     ) {
       newsArray.push(posts[i]);
     }

@@ -3,6 +3,8 @@ const { categorizeData } = require("../helpers/categorizationAlgorithm");
 const { createPosts } = require("../helpers/postManagement");
 const postsModel = require("../models/postsModel");
 
+const NUM_POSTS = 35;
+
 // Posts from Reddit API
 var posts;
 
@@ -18,7 +20,7 @@ var general;
 const getPosts = async (req, res) => {
   // Obtain raw JSON data from Reddit's API representing posts
   const response = await axios
-    .get("https://www.reddit.com/r/cars/hot.json?limit=25")
+    .get(`https://www.reddit.com/r/cars/hot.json?limit=${NUM_POSTS}`)
     .catch((err) => {
       console.log("Error obtaining posts from Reddit API: " + err);
       return;
