@@ -2,7 +2,7 @@ import "../styling/categories.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import Post from "./post";
 
 function Categories() {
@@ -92,25 +92,43 @@ function Categories() {
           general
         </Button>
       </Typography>
-      {isNewsClicked && (
-        newsPosts.map(post => {
-            {console.log(post.description)}
-            return <Post title={post.title} description={post.description} externalLink={post.externalLink}
-            postType="news"></Post>
-        })
-      )}
-      {isDiscussionsClicked && (
-        discussionPosts.map(post => {
-            return <Post title={post.title} description={post.description} externalLink={post.externalLink}
-            url={post.url} postType="discussion"></Post>
-        })
-      )}
-      {isGeneralClicked && (
-        generalPosts.map(post => {
-            return <Post title={post.title} description={post.description} externalLink={post.externalLink}
-            url={post.url} postType="general"></Post>
-        })
-      )}
+      <div id="posts">
+        {isNewsClicked &&
+          newsPosts.map((post) => {
+            return (
+              <Post
+                title={post.title}
+                description={post.description}
+                externalLink={post.externalLink}
+                postType="news"
+              ></Post>
+            );
+          })}
+        {isDiscussionsClicked &&
+          discussionPosts.map((post) => {
+            return (
+              <Post
+                title={post.title}
+                description={post.description}
+                externalLink={post.externalLink}
+                url={post.url}
+                postType="discussion"
+              ></Post>
+            );
+          })}
+        {isGeneralClicked &&
+          generalPosts.map((post) => {
+            return (
+              <Post
+                title={post.title}
+                description={post.description}
+                externalLink={post.externalLink}
+                url={post.url}
+                postType="general"
+              ></Post>
+            );
+          })}
+      </div>
     </div>
   );
 }
