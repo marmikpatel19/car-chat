@@ -46,7 +46,8 @@ function Post(props) {
           </Typography>
           <Button
             component={Link}
-            to={props.externalLink}
+            target="_blank"
+            href={props.externalLink}
             variant="body2"
             sx={{
               fontWeight: "400",
@@ -66,7 +67,8 @@ function Post(props) {
           {props.postType === "discussion" && (
             <Button
               component={Link}
-              to={props.url}
+              target="_blank"
+              href={props.url}
               variant="body2"
               sx={{
                 fontWeight: "400",
