@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Post from "./post";
+import { Grid } from "@mui/material";
 
 function Categories() {
   // Hooks for buttons
@@ -92,42 +93,56 @@ function Categories() {
           general
         </Button>
       </Typography>
-      <div id="posts">
-        {isNewsClicked &&
-          newsPosts.map((post) => {
-            return (
-              <Post
-                title={post.title}
-                description={post.description}
-                externalLink={post.externalLink}
-                postType="news"
-              ></Post>
-            );
-          })}
-        {isDiscussionsClicked &&
-          discussionPosts.map((post) => {
-            return (
-              <Post
-                title={post.title}
-                description={post.description}
-                externalLink={post.externalLink}
-                url={post.url}
-                postType="discussion"
-              ></Post>
-            );
-          })}
-        {isGeneralClicked &&
-          generalPosts.map((post) => {
-            return (
-              <Post
-                title={post.title}
-                description={post.description}
-                externalLink={post.externalLink}
-                url={post.url}
-                postType="general"
-              ></Post>
-            );
-          })}
+      <div id="categories-posts">
+        <Grid
+          container
+          spacing={{ xs: 4 }}
+          columnSpacing={{ sm: 2, md: 3 }}
+          align="center"
+          id="categories-grid"
+        >
+          {isNewsClicked &&
+            newsPosts.map((post) => {
+              return (
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
+                  <Post
+                    title={post.title}
+                    description={post.description}
+                    externalLink={post.externalLink}
+                    postType="news"
+                  ></Post>
+                </Grid>
+              );
+            })}
+          {isDiscussionsClicked &&
+            discussionPosts.map((post) => {
+              return (
+                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+                  <Post
+                    title={post.title}
+                    description={post.description}
+                    externalLink={post.externalLink}
+                    url={post.url}
+                    postType="discussion"
+                  ></Post>
+                </Grid>
+              );
+            })}
+          {isGeneralClicked &&
+            generalPosts.map((post) => {
+              return (
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
+                  <Post
+                    title={post.title}
+                    description={post.description}
+                    externalLink={post.externalLink}
+                    url={post.url}
+                    postType="general"
+                  ></Post>
+                </Grid>
+              );
+            })}
+        </Grid>
       </div>
     </div>
   );

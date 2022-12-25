@@ -6,8 +6,10 @@ import { CardActionArea } from "@mui/material";
 import "../styling/post.css";
 
 function Post(props) {
+  var width = props.postType === "discussion" ? 1000 : 500;
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: width }}>
       <CardActionArea>
         <CardContent>
           <Typography
