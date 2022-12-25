@@ -30,7 +30,7 @@
   background-color: grey;
   padding: 10px;
   bottom: 0;
-  position: fixed;
+  position: relative;
   width: 100%;
 }
 

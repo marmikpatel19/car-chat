@@ -1,12 +1,14 @@
 const { Post } = require("../classes/post");
 
+const NUM_POSTS = 35;
+
 // Creates an array of Post objects from raw JSON data of posts from Reddit API
 const createPosts = (posts) => {
   var cleanedPosts = [];
 
   // Iterate through raw JSON date containing all posts, capturing relevant information and
   // storing them in Post objects, and into the cleanedPosts array
-  for (var i = 2; i < 25; i++) {
+  for (var i = 2; i < NUM_POSTS; i++) {
     // JSON data of post
     var post = posts.data.children[i].data;
 
