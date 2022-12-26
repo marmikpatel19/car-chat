@@ -14,28 +14,8 @@ function Post(props) {
     <Card sx={{ maxWidth: width }}>
       <CardActionArea>
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            align="center"
-            sx={{
-              fontWeight: "900",
-              fontSize: "1.3rem",
-              ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
-            }}
-          >
-            {props.title}
-          </Typography>
-          <Typography
-            variant="body2"
-            align="center"
-            sx={{
-              fontWeight: "400",
-              fontSize: "1.3rem",
-              ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
-            }}
-          >
+          <p id="post-title">{props.title}</p>
+          <div id="post-discription">
             <ReadMoreAndLess
               className="read-more-content"
               readMoreText=" Read more"
@@ -43,7 +23,7 @@ function Post(props) {
             >
               {disc}
             </ReadMoreAndLess>
-          </Typography>
+          </div>
           <Button
             component={Link}
             target="_blank"
@@ -55,7 +35,7 @@ function Post(props) {
               ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
             }}
             style={{
-              "text-transform": "none",
+              textTransform: "none",
               margin: "0 auto",
               display: "flex",
               color: "var(--clr-primary)",
@@ -78,7 +58,7 @@ function Post(props) {
                 },
               }}
               style={{
-                "text-transform": "none",
+                textTransform: "none",
                 margin: "0 auto",
                 display: "flex",
                 color: "var(--clr-primary)",

@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_ENDPOINT,
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -32,8 +32,9 @@ app.use(
 app.use("/api", postRoutes);
 
 // Port
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
+app.listen(port);
+// , () => {
+//   console.log(`Server started on port ${port}`);
+// });
 
 module.exports = app;
