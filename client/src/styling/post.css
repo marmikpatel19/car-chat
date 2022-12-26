@@ -1,0 +1,16 @@
+#post-title {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-4);
+}
+
+#post-discription {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-reg);
+}
+
+@media screen and (min-width: 550px) {
+  #post-title,
+  #font-discription {
+    font-size: var(--fs-3);
+  }
+}

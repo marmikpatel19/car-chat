@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Button, Link } from "@mui/material";
 import { CardActionArea } from "@mui/material";
 import ReadMoreAndLess from "react-read-more-less";
+import "../styling/post.css";
 
 function Post(props) {
   var width = props.postType === "discussion" ? 1000 : 500;
@@ -13,28 +14,8 @@ function Post(props) {
     <Card sx={{ maxWidth: width }}>
       <CardActionArea>
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            align="center"
-            sx={{
-              fontWeight: "900",
-              fontSize: "1.3rem",
-              ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
-            }}
-          >
-            {props.title}
-          </Typography>
-          <Typography
-            variant="body2"
-            align="center"
-            sx={{
-              fontWeight: "400",
-              fontSize: "1.3rem",
-              ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
-            }}
-          >
+          <p id="post-title">{props.title}</p>
+          <div id="post-discription">
             <ReadMoreAndLess
               className="read-more-content"
               readMoreText=" Read more"
@@ -42,7 +23,7 @@ function Post(props) {
             >
               {disc}
             </ReadMoreAndLess>
-          </Typography>
+          </div>
           <Button
             component={Link}
             target="_blank"
