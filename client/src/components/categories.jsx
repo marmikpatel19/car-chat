@@ -104,7 +104,15 @@ function Categories() {
           {isNewsClicked &&
             newsPosts.map((post) => {
               return (
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
+                <Grid
+                  key={post.title}
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={4}
+                  xl={3}
+                >
                   <Post
                     title={post.title}
                     description={post.description}
@@ -117,7 +125,15 @@ function Categories() {
           {isDiscussionsClicked &&
             discussionPosts.map((post) => {
               return (
-                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+                <Grid
+                  key={post.title}
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={6}
+                  xl={6}
+                >
                   <Post
                     title={post.title}
                     description={post.description}
@@ -131,7 +147,15 @@ function Categories() {
           {isGeneralClicked &&
             generalPosts.map((post) => {
               return (
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
+                <Grid
+                  key={post.title}
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={4}
+                  xl={3}
+                >
                   <Post
                     title={post.title}
                     description={post.description}

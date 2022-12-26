@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import { Button, Link } from "@mui/material";
 import { CardActionArea } from "@mui/material";
 import ReadMoreAndLess from "react-read-more-less";
-import "../styling/post.css";
 
 function Post(props) {
   var width = props.postType === "discussion" ? 1000 : 500;
