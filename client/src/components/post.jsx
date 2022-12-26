@@ -35,7 +35,7 @@ function Post(props) {
               ["@media screen and (min-width: 550px)"]: { fontSize: "1.5rem" },
             }}
             style={{
-              "text-transform": "none",
+              textTransform: "none",
               margin: "0 auto",
               display: "flex",
               color: "var(--clr-primary)",
@@ -58,7 +58,7 @@ function Post(props) {
                 },
               }}
               style={{
-                "text-transform": "none",
+                textTransform: "none",
                 margin: "0 auto",
                 display: "flex",
                 color: "var(--clr-primary)",
