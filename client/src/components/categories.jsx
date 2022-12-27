@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Post from "./post";
 import { Grid } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 function Categories() {
   // Hooks for buttons
@@ -16,6 +17,7 @@ function Categories() {
   const [newsPosts, setNewsPosts] = useState([]);
   const [discussionPosts, setDiscussionPosts] = useState([]);
   const [generalPosts, setGeneralPosts] = useState([]);
+  const [isAPILoading, setIsAPILoading] = useState(true);
 
   useEffect(() => {
     // Response.data is an array consisting of Category objects.
@@ -29,6 +31,7 @@ function Categories() {
       setDiscussionPosts(response.data[0].posts);
       setNewsPosts(response.data[1].posts);
       setGeneralPosts(response.data[2].posts);
+      setIsAPILoading(false);
     };
 
     getPosts();
@@ -93,81 +96,88 @@ function Categories() {
           general
         </Button>
       </Typography>
-      <div id="categories-posts">
-        <Grid
-          container
-          spacing={{ xs: 4 }}
-          columnSpacing={{ sm: 2, md: 3 }}
-          align="center"
-          id="categories-grid"
-        >
-          {isNewsClicked &&
-            newsPosts.map((post) => {
-              return (
-                <Grid
-                  key={post.title}
-                  item
-                  xs={12}
-                  sm={12}
-                  md={6}
-                  lg={4}
-                  xl={3}
-                >
-                  <Post
-                    title={post.title}
-                    description={post.description}
-                    externalLink={post.externalLink}
-                    postType="news"
-                  ></Post>
-                </Grid>
-              );
-            })}
-          {isDiscussionsClicked &&
-            discussionPosts.map((post) => {
-              return (
-                <Grid
-                  key={post.title}
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={6}
-                  xl={6}
-                >
-                  <Post
-                    title={post.title}
-                    description={post.description}
-                    externalLink={post.externalLink}
-                    url={post.url}
-                    postType="discussion"
-                  ></Post>
-                </Grid>
-              );
-            })}
-          {isGeneralClicked &&
-            generalPosts.map((post) => {
-              return (
-                <Grid
-                  key={post.title}
-                  item
-                  xs={12}
-                  sm={12}
-                  md={6}
-                  lg={4}
-                  xl={3}
-                >
-                  <Post
-                    title={post.title}
-                    description={post.description}
-                    externalLink={post.externalLink}
-                    url={post.url}
-                    postType="general"
-                  ></Post>
-                </Grid>
-              );
-            })}
-        </Grid>
-      </div>
+      {isAPILoading && (
+        <CircularProgress
+          style={{ marginLeft: "48%", marginTop: "4%", marginBottom: "4%" }}
+        />
+      )}
+      {!isAPILoading && (
+        <div id="categories-posts">
+          <Grid
+            container
+            spacing={{ xs: 4 }}
+            columnSpacing={{ sm: 2, md: 3 }}
+            align="center"
+            id="categories-grid"
+          >
+            {isNewsClicked &&
+              newsPosts.map((post) => {
+                return (
+                  <Grid
+                    key={post.title}
+                    item
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    lg={4}
+                    xl={3}
+                  >
+                    <Post
+                      title={post.title}
+                      description={post.description}
+                      externalLink={post.externalLink}
+                      postType="news"
+                    ></Post>
+                  </Grid>
+                );
+              })}
+            {isDiscussionsClicked &&
+              discussionPosts.map((post) => {
+                return (
+                  <Grid
+                    key={post.title}
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={6}
+                    xl={6}
+                  >
+                    <Post
+                      title={post.title}
+                      description={post.description}
+                      externalLink={post.externalLink}
+                      url={post.url}
+                      postType="discussion"
+                    ></Post>
+                  </Grid>
+                );
+              })}
+            {isGeneralClicked &&
+              generalPosts.map((post) => {
+                return (
+                  <Grid
+                    key={post.title}
+                    item
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    lg={4}
+                    xl={3}
+                  >
+                    <Post
+                      title={post.title}
+                      description={post.description}
+                      externalLink={post.externalLink}
+                      url={post.url}
+                      postType="general"
+                    ></Post>
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </div>
+      )}
     </div>
   );
 }
